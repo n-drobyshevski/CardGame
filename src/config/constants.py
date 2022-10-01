@@ -1,9 +1,9 @@
 """ All project constants """
 import types
 
-from src.config.types import CardTypesType, CardValuesType
+from src.config.types import CardSuitType, CardValuesType
 
-CARD_TYPES: CardTypesType = ["spades", "clubs", "hearts", "diamonds", "joker", "meta"]
+CARD_SUITS: CardSuitType = ["spades", "clubs", "hearts", "diamonds", "joker", "meta"]
 CARD_VALUES: CardValuesType = [
     "1",
     "2",

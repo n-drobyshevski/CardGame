@@ -1,12 +1,12 @@
 """All game custom types"""
 from typing import Literal
 
-CardDataType = dict[int : dict[Literal["value"] : str, Literal["type"] : str]]
+CardDataType = dict[int : dict[Literal["value"] : str, Literal["suit"] : str]]
 
 PlayerDataType = dict[Literal["id"] : int, Literal["hand"] : list]
 PlayerHandType = list[CardDataType]
 
-CardTypesType = Literal["spades", "clubs", "hearts", "diamonds"]
+CardSuitsType = Literal["spades", "clubs", "hearts", "diamonds", "metacard", "joker"]
 CardValuesType = Literal[
     "1",
     "2",

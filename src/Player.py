@@ -1,6 +1,6 @@
 from random import randint
 from .Card import Card
-from .config.types import CardDataType, CardTypesType, PlayerDataType, PlayerHandType
+from .config.types import CardDataType, CardSuitsType, PlayerDataType, PlayerHandType
 
 
 class Player:

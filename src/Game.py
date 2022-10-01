@@ -4,14 +4,13 @@ from .Card import Card, MetaCard
 
 
 from .config.constants import (
-    CARD_TYPES,
+    CARD_SUITS,
     CARD_VALUES,
     METACARD_VALUES,
     CARD_QUANTITY,
     CARD_ID,
 )
-from .config.types import CardDataType
-from .config.types import PlayerHandType
+from .config.types import CardDataType, PlayerHandType
 
 
 class Game:
@@ -23,9 +22,9 @@ class Game:
     def create_deck(self) -> list:
         current_card_id = 0
         deck = []
-        for tp in CARD_TYPES[:4]:
+        for tp in CARD_SUITS[:4]:
             for vl in CARD_VALUES:
-                card = Card(value=vl, card_type=tp, card_id=CARD_ID[current_card_id])
+                card = Card(value=vl, card_suit=tp, card_id=CARD_ID[current_card_id])
                 current_card_id += 1
                 deck.append(card.get_data())
 
@@ -34,7 +33,7 @@ class Game:
             current_card_id += 1
             deck.append(card.get_data())
 
-        joker = Card(value="JOKER", card_type="JOKER", card_id=CARD_ID[current_card_id])
+        joker = Card(value="JOKER", card_suit="JOKER", card_id=CARD_ID[current_card_id])
         deck.append(joker.get_data())
         return deck
 
