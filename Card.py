@@ -18,4 +18,4 @@ class Card:
 
 class MetaCard(Card):
     def __init__(self, value: str, card_id: int) -> None:
-        super().__init__(value=value, card_id=card_id, card_type="meta")
+        super().__init__(value=value, card_id=card_id, card_type="META")

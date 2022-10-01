@@ -2,11 +2,8 @@ from random import randint
 from Player import Player
 from Card import Card, MetaCard
 
-CARD_TYPES = ["Spades", "Clubs", "Hearts", "Diamonds"]
-CARD_VALUES = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "V", "C", "Q", "K"]
-METACARD_VALUES = [str(x) for x in range(1, 22)]
-CARD_QUANTITY = 78
-CARD_ID = [x for x in range(CARD_QUANTITY + 1)]
+
+from game_config import CARD_TYPES, CARD_VALUES, METACARD_VALUES, CARD_QUANTITY, CARD_ID
 
 
 class Game:
@@ -29,7 +26,7 @@ class Game:
             current_card_id += 1
             deck.append(card.get_data())
 
-        joker = MetaCard(value="JOKER", card_id=CARD_ID[current_card_id])
+        joker = Card(value="JOKER", card_type="JOKER", card_id=CARD_ID[current_card_id])
         deck.append(joker.get_data())
         return deck
 
