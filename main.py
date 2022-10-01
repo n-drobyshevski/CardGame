@@ -1,5 +1,6 @@
 from rich.pretty import pprint
-from Game import Game
+from src.Game import Game
+from src.cli import test
 
 game = Game()
 
@@ -8,3 +9,4 @@ game = Game()
 
 # print(game.get_random_card())
 pprint([player.get_data() for player in game.players])
+test.test()

@@ -1,3 +1,6 @@
+from .config.types import CardDataType
+
+
 class Card:
     # Ajoute ID
     def __init__(self, value: str, card_type: str, card_id: int) -> None:
@@ -12,7 +15,7 @@ class Card:
     def __str__(self) -> str:
         return f"value: {self.value}, type:{self.card_type}"
 
-    def get_data(self):
+    def get_data(self) -> CardDataType:
         return {self.card_id: {"value": {self.value}, "type": {self.card_type}}}
 
 
