@@ -1,6 +1,12 @@
 from random import randint
 from .Card import Card
-from .config.types import CardDataType, CardSuitsType, PlayerDataType, PlayerHandType
+from .config.types import (
+    CardDataType,
+    CardSuitsType,
+    CardValuesType,
+    PlayerDataType,
+    PlayerHandType,
+)
 
 
 class Player:
@@ -22,11 +28,13 @@ class Player:
                 return self.hand.pop(i)
         return None
 
-    def has_card(self, card: CardDataType) -> bool:
+    def has_card(self, value: CardValuesType, suit: CardSuitsType) -> bool:
+        """checks if provided card is in the player hand"""
         for i in len(self.hand):
-            index, *_ = self.hand[i]
-            if index == card_id:
-                return self.hand.pop(i)
+            if self.hand[i].value == value and self.hand[i].suit == suit:
+                return True
+        else:
+            return False
 
     def create_id(self) -> int:
         return randint(0, 9999)

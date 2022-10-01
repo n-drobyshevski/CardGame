@@ -9,4 +9,5 @@ game = Game()
 
 # print(game.get_random_card())
 pprint([player.get_data() for player in game.players])
-test.test()
+# pprint(game.create_players())
+# test.test()
