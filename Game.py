@@ -5,6 +5,8 @@ from Card import Card, MetaCard
 CARD_TYPES = ["Spades", "Clubs", "Hearts", "Diamonds"]
 CARD_VALUES = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "V", "C", "Q", "K"]
 METACARD_VALUES = [str(x) for x in range(1, 22)]
+CARD_QUANTITY = 78
+CARD_ID = [x for x in range(CARD_QUANTITY + 1)]
 
 
 class Game:
@@ -14,17 +16,20 @@ class Game:
         self.players = self.create_players()
 
     def create_deck(self):
+        current_card_id = 0
         deck = []
         for tp in CARD_TYPES:
             for vl in CARD_VALUES:
-                card = Card(value=vl, type=tp)
+                card = Card(value=vl, card_type=tp, card_id=CARD_ID[current_card_id])
+                current_card_id += 1
                 deck.append(card.get_data())
 
         for vl in METACARD_VALUES:
-            card = MetaCard(value=vl)
+            card = MetaCard(value=vl, card_id=CARD_ID[current_card_id])
+            current_card_id += 1
             deck.append(card.get_data())
 
-        joker = MetaCard(value="JOKER")
+        joker = MetaCard(value="JOKER", card_id=CARD_ID[current_card_id])
         deck.append(joker.get_data())
         return deck
 

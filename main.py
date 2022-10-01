@@ -1,7 +1,7 @@
 from rich.pretty import pprint
 from Game import Game
 
-game = Game
+game = Game()
 
 
 # pprint(game.deck)

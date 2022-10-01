@@ -7,13 +7,18 @@ class Player:
         self.id = self.create_id()
 
     def get_data(self):
+        """Returns player data"""
         return {"id": self.id, "hand": self.hand}
 
     def take_card(self, deck):
         pass
 
-    def put_card(self, card):
-        pass
+    def put_card(self, card_id):
+        """delete card from self.hand and returns it"""
+        for i in len(self.hand):
+            if self.hand[i].card_id == card_id:
+                return self.hand.pop(i)
+        return None
 
     def create_id(self):
         return randint(0, 9999)
