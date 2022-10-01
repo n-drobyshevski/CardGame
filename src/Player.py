@@ -24,7 +24,8 @@ class Player:
 
     def has_card(self, card: CardDataType) -> bool:
         for i in len(self.hand):
-            if self.hand[i].card_id == card_id:
+            index, *_ = self.hand[i]
+            if index == card_id:
                 return self.hand.pop(i)
 
     def create_id(self) -> int:

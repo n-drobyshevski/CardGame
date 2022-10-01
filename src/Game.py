@@ -22,18 +22,22 @@ class Game:
     def create_deck(self) -> list:
         current_card_id = 0
         deck = []
+
+        # Adding common cards
         for tp in CARD_SUITS[:4]:
             for vl in CARD_VALUES:
                 card = Card(value=vl, card_suit=tp, card_id=CARD_ID[current_card_id])
                 current_card_id += 1
                 deck.append(card.get_data())
 
+        # Adding metacards
         for vl in METACARD_VALUES:
             card = MetaCard(value=vl, card_id=CARD_ID[current_card_id])
             current_card_id += 1
             deck.append(card.get_data())
 
-        joker = Card(value="JOKER", card_suit="JOKER", card_id=CARD_ID[current_card_id])
+        # Adding joker
+        joker = Card(value="joker", card_suit="joker", card_id=CARD_ID[current_card_id])
         deck.append(joker.get_data())
         return deck
 

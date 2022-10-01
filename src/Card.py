@@ -10,13 +10,13 @@ class Card:
 
     # def get_card(self):
     def __repr__(self) -> str:
-        return f"value: {self.value}, suit:{self.card_suit}"
+        return f"id : {self.id} value: {self.value}, suit:{self.card_suit}"
 
     def __str__(self) -> str:
-        return f"value: {self.value}, suit:{self.card_suit}"
+        return f"id: {self.id} value: {self.value}, suit:{self.card_suit}"
 
     def get_data(self) -> CardDataType:
-        return {self.card_id: {"value": {self.value}, "suit": {self.card_suit}}}
+        return {"id": self.card_id, "value": {self.value}, "suit": {self.card_suit}}
 
 
 class MetaCard(Card):
