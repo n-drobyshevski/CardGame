@@ -1,5 +1,6 @@
 from random import randint
 from .Card import Card
+from .cli.cardsOutils import Outils
 from .config.types import (
     CardDataType,
     CardSuitsType,
@@ -8,11 +9,16 @@ from .config.types import (
     PlayerHandType,
 )
 
+outils = Outils()
+
 
 class Player:
-    def __init__(self, init_hand: PlayerHandType) -> None:
+    def __init__(self, init_hand: PlayerHandType, position: str) -> None:
         self.hand = init_hand
+        self.position = position
         self.id = self.create_id()
+        self.role = "player-role"
+        self.hand_image = outils.get_player_hand_image(self.hand)
 
     def get_data(self) -> PlayerDataType:
         """Returns player data"""

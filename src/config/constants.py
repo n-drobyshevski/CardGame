@@ -1,4 +1,5 @@
 """ All project constants """
+from tkinter import CENTER
 import types
 
 from src.config.types import CardSuitsType, CardValuesType
@@ -23,3 +24,5 @@ CARD_VALUES: CardValuesType = [
 METACARD_VALUES: list[str] = [str(x) for x in range(1, 22)]
 CARD_QUANTITY: int = 78
 CARD_ID: list[int] = [x for x in range(CARD_QUANTITY + 1)]
+
+PLAYER_POSITIONS = ["top_center", "center_left", "center_right", "bottom_center"]

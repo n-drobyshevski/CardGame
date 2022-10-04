@@ -9,6 +9,7 @@ from .config.constants import (
     METACARD_VALUES,
     CARD_QUANTITY,
     CARD_ID,
+    PLAYER_POSITIONS,
 )
 from .config.types import CardDataType, PlayerHandType
 
@@ -31,4 +32,7 @@ class Game:
         pass
 
     def create_players(self) -> list:
-        return [Player(self.create_player_hand()) for _ in range(4)]
+        return [
+            Player(self.create_player_hand(), position=PLAYER_POSITIONS[i])
+            for i in range(4)
+        ]

@@ -28,7 +28,7 @@ class Deck:
             deck.append(card.get_data())
 
         # Adding joker
-        joker = Card(value="joker", card_suit="joker", card_id=CARD_ID[current_card_id])
+        joker = Card(value="J", card_suit="joker", card_id=CARD_ID[current_card_id])
         deck.append(joker.get_data())
         return deck
 
