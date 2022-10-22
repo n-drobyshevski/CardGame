@@ -1,11 +1,16 @@
-""" All project constants """
-from tkinter import CENTER
-import types
+"" " All project constants " ""
 
 from src.config.types import CardSuitsType, CardValuesType
 
-CARD_SUITS: CardSuitsType = ["spades", "clubs", "hearts", "diamonds", "joker", "meta"]
-CARD_VALUES: CardValuesType = [
+CARD_SUITS: list[CardSuitsType] = [
+    "spades",
+    "clubs",
+    "hearts",
+    "diamonds",
+    "joker",
+    "metacard",
+]
+CARD_VALUES: list[CardValuesType] = [
     "1",
     "2",
     "3",
@@ -26,3 +31,8 @@ CARD_QUANTITY: int = 78
 CARD_ID: list[int] = [x for x in range(CARD_QUANTITY + 1)]
 
 PLAYER_POSITIONS = ["top_center", "center_left", "center_right", "bottom_center"]
+
+
+# Appearance config variables
+CARD_BORDER_COLOR = "blue"
+CARD_VALUE_COLOR = "blue"

@@ -1,24 +1,19 @@
 from random import randint
 from .Card import Card
-from .cli.cardsOutils import Outils
 from .config.types import (
     CardDataType,
     CardSuitsType,
     CardValuesType,
     PlayerDataType,
-    PlayerHandType,
 )
-
-outils = Outils()
 
 
 class Player:
-    def __init__(self, init_hand: PlayerHandType, position: str) -> None:
+    def __init__(self, init_hand: list[Card], position: str) -> None:
         self.hand = init_hand
         self.position = position
         self.id = self.create_id()
         self.role = "player-role"
-        self.hand_image = outils.get_player_hand_image(self.hand)
 
     def get_data(self) -> PlayerDataType:
         """Returns player data"""
@@ -29,15 +24,16 @@ class Player:
 
     def put_card(self, card_id):
         """delete card from self.hand and returns it"""
-        for i in len(self.hand):
-            if self.hand[i].card_id == card_id:
+        for i in range(len(self.hand)):
+            if self.hand[i].id == card_id:
                 return self.hand.pop(i)
         return None
 
     def has_card(self, value: CardValuesType, suit: CardSuitsType) -> bool:
         """checks if provided card is in the player hand"""
-        for i in len(self.hand):
-            if self.hand[i].value == value and self.hand[i].suit == suit:
+        for i in range(len(self.hand)):
+            current_card = self.hand[i]
+            if current_card.value == value and current_card.suit == suit:
                 return True
         else:
             return False

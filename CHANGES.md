@@ -27,3 +27,9 @@
 ---97b572
 
     - Change: CardData representation to {'id':id, 'value':value, 'suit':suit}
+
+
+
+
+    - type fixes
+    - Console module

@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["METACARD"]
+  "cSpell.words": ["METACARD"],
+  "python.analysis.typeCheckingMode": "basic"
 }
