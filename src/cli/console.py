@@ -88,17 +88,17 @@ class Console:
         self.current_player_section.set_data(data, player_name=player_name)  # type: ignore
 
     # ----------------------------------------------------------------------------------------
-    def update(self, info:bool=True, table:bool=True, player:bool=True):
+    def update(self, info: bool = True, table: bool = True, player: bool = True):
         """
         prints layout composed of sections
         to change content, use set_[]_data() methods
         """
         self.layout["info"].update(self.info_section.render())
-        self.layout['info'].visible = info
+        self.layout["info"].visible = info
 
         self.layout["table"].update(self.table_section.render())
-        self.layout['table'].visible = table
+        self.layout["table"].visible = table
 
         self.layout["player"].update(self.current_player_section.render())
-        self.layout['player'].visible = player
+        self.layout["player"].visible = player
         print(self.layout)

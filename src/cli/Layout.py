@@ -2,7 +2,7 @@ from rich.layout import Layout
 from rich import print
 
 TABLE_HEIGHT = 20
-PLAYER_HEIGHT = 25
+PLAYER_HEIGHT = 20
 INFO_HEIGHT = 5
 
 

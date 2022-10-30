@@ -7,7 +7,6 @@ from src.Game import Game
 
 
 def initialize():
-    global game, console  # global because it will be used in main()
     game = Game(player_names=["first", "second", "third", "fourth"])
     console = Console()
 
@@ -15,18 +14,15 @@ def initialize():
     index = randint(0, 3)  # only exemple, needs to be changed
     game.first_playing_player = game.players[index]
 
+    return game, console
 
-def main():
+
+def main(game, console):
     console.clear()
     # ---------------------------------------- just some test things, change it
 
     # ------------------- GAME LOGIC -----------------------
     current_player = game.get_next_player()
-    if game.get_next_player() == game.first_playing_player:
-        game.round += 1
-        crd, pl = game.compare_cards(game.table, game.table[0][0].suit)
-        print(crd, pl)
-
     # ------------------ SET NEW DATA -----------------------
     console.set_info_data(data=game.round)
     console.set_table_data(data=game.table)
@@ -47,14 +43,15 @@ def main():
         (current_player.put_card_from_hand(card_index - 1), current_player)
     )
 
-    return True
+    return True, game, console
 
 
 if __name__ == "__main__":
     # INITIALIZING GAME
-    initialize()
+    game, console = initialize()
 
     # MAIN LOOP
+
     condition = True
     while condition:
-        condition = main()
+        condition, game, console = main(game, console)
