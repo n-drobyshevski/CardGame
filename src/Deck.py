@@ -1,5 +1,5 @@
 from typing import Optional
-from .config.types import CardDataType, CardValuesType, CardSuitsType
+from .config.types import CardValuesType, CardSuitsType
 from .config.constants import CARD_ID, CARD_SUITS, CARD_VALUES, METACARD_VALUES
 
 
@@ -8,10 +8,10 @@ from .Card import Card, MetaCard
 
 class Deck:
     def __init__(self):
-        self.deck = self.create_deck()
+        self.deck = self._create_deck()
         self.length = len(self.deck)
 
-    def create_deck(self) -> list:
+    def _create_deck(self) -> list:
         current_card_id = 0
         deck = []
 
@@ -36,12 +36,6 @@ class Deck:
         )
         deck.append(joker)
         return deck
-
-    def get_card_by_id(self, id) -> Card:
-        for card in self.deck:
-            if card.id == id:
-                return card
-        raise Exception("requested id doesn't correspond to any card")
 
     def __repr__(self) -> str:
         return f"{self.deck}"

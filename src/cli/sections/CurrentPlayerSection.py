@@ -12,10 +12,15 @@ from ...config.constants import CARD_BORDER_COLOR
 
 
 class CurrentPlayerSection(Section):
-    def __init__(self, data, player_name: Optional[str]):
+    def __init__(self, data):
         super().__init__(data)
         self.data = data
+        self.player_name: Optional[str] = None
+
+    def set_data(self, data, player_name=None):
+        # self.data = data
         self.player_name = player_name
+        super().set_data(data)
 
     def render(self):
 

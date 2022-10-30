@@ -1,6 +1,6 @@
 """All game custom types"""
 # from ..Card import Card
-from typing import Annotated, Literal, Type, TypeAlias, TypedDict, Any, TypeGuard
+from typing import Literal, TypeAlias, Any
 
 CardSuitsType: TypeAlias = Literal[
     "spades", "clubs", "hearts", "diamonds", "metacard", "joker"
@@ -38,18 +38,5 @@ CardValuesType: TypeAlias = (
         "JOKER",
     ]
 )
-# CardDataType:TypeAlias = dict[Literal["id","value", "suit",], str | int]
-class CardDataType(TypedDict):
-    id: int
-    value: CardValuesType
-    suit: CardSuitsType
 
-
-# -- PLAYER TYPES
-# def is_card_list(val: list[Card]) -> TypeGuard[list[Card]]:
-
-
-# PlayerDataType:TypeAlias = dict[Literal["id","hand"], int| list]
-class PlayerDataType(TypedDict):
-    id: int
-    hand: list
+PlayerRoles: TypeAlias = Literal["petit", "garde", "garde sans", "garde contre", ""]

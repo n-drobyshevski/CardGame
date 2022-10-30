@@ -1,7 +1,7 @@
 from rich.layout import Layout
 from rich import print
 
-TABLE_HEIGHT = 15
+TABLE_HEIGHT = 20
 PLAYER_HEIGHT = 25
 INFO_HEIGHT = 5
 
@@ -12,7 +12,6 @@ class GameLayout:
 
     def _initialize_layout(self) -> Layout:
         layout = Layout()
-        layout.size = 100
         # print(layout)
         layout.split_column(
             Layout(name="info"),
