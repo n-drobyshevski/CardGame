@@ -1,5 +1,6 @@
 from .Section import Section
 from rich.panel import Panel
+from rich.align import Align
 
 
 class InfoSection(Section):
@@ -13,4 +14,4 @@ class InfoSection(Section):
         else:
             res = str(self.data)
 
-        return Panel(res)
+        return Panel(Align.center(res))

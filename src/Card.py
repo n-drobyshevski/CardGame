@@ -16,7 +16,7 @@ class Card:
     #     res: CardDataType = {"id": self.card_id, "value": self.value, "suit": self.suit}
     #     return res
 
-    def suit_to_symbol(self) -> str:
+    def _suit_to_symbol(self) -> str:
         """returns symbol of card suit"""
         data = {
             "clubs": "♣",
@@ -29,13 +29,13 @@ class Card:
         return data[self.suit]
 
     def __repr__(self) -> str:
-        res = f" {self.suit_to_symbol()}[{CARD_VALUE_COLOR}]{self.value}[/{CARD_VALUE_COLOR}]"
+        res = f" {self._suit_to_symbol()}[{CARD_VALUE_COLOR}]{self.value}[/{CARD_VALUE_COLOR}]"
         if len(self.value) > 1:
             res = res[1:]
         return res
 
     def __str__(self) -> str:
-        res = f" {self.suit_to_symbol()}[{CARD_VALUE_COLOR}]{self.value}[/{CARD_VALUE_COLOR}]"
+        res = f" {self._suit_to_symbol()}[{CARD_VALUE_COLOR}]{self.value}[/{CARD_VALUE_COLOR}]"
         if len(self.value) > 1:
             res = res[1:]
         return res

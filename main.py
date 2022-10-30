@@ -1,37 +1,60 @@
+from random import randint
 from time import sleep
 
-from src.cli.console import Console
+from src.cli.Console import Console
 from src.Player import Player
 from src.Game import Game
 
 
-def main(game: Game, console: Console):
+def initialize():
+    global game, console  # global because it will be used in main()
+    game = Game(player_names=["first", "second", "third", "fourth"])
+    console = Console()
+
+    # choose first playing player
+    index = randint(0, 3)  # only exemple, needs to be changed
+    game.first_playing_player = game.players[index]
+
+
+def main():
     console.clear()
+    # ---------------------------------------- just some test things, change it
 
-    current_player = game.players[0]
-    game.round += 1
+    # ------------------- GAME LOGIC -----------------------
+    current_player = game.get_next_player()
+    if game.get_next_player() == game.first_playing_player:
+        game.round += 1
+        crd, pl = game.compare_cards(game.table, game.table[0][0].suit)
+        print(crd, pl)
 
-    # set new data
-    console.set_info_data(game.round)
-    console.set_table_data("table")
-    console.set_current_player_data(current_player.hand)
-    # Updated layout
+    # ------------------ SET NEW DATA -----------------------
+    console.set_info_data(data=game.round)
+    console.set_table_data(data=game.table)
+    console.set_current_player_data(
+        data=current_player.hand, player_name=current_player.name
+    )
+
+    # ------------------ UPDATE LAYOUT ---------------------
     console.update()
 
-    # remove card from player hand and add it to game.table
-    # card_index = console.askInt("choose a card (by index)")
-    # if card_index <= len(current_player.hand):
-    #     game.table.append(current_player.hand[card_index])
+    # ------------------ USER INPUT ------------------------
+    card_index = console.askInt("choose a card")
 
-    return False
+    # ------------------ GAME LOGIC ------------------------
+
+    # remove card from player hand and add it to game.table
+    game.table.append(
+        (current_player.put_card_from_hand(card_index - 1), current_player)
+    )
+
+    return True
 
 
 if __name__ == "__main__":
-    # Initializing game
-    game = Game()
-    console = Console()
-    game.create_players()
+    # INITIALIZING GAME
+    initialize()
 
+    # MAIN LOOP
     condition = True
     while condition:
-        condition = main(game, console)
+        condition = main()

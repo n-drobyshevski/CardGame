@@ -1,28 +1,24 @@
 from random import randint
 from .Card import Card
-from .config.types import (
-    CardDataType,
-    CardSuitsType,
-    CardValuesType,
-    PlayerDataType,
-)
+from .config.types import CardSuitsType, CardValuesType, PlayerRoles
 
 
 class Player:
-    def __init__(self, init_hand: list[Card], position: str) -> None:
+    def __init__(self, init_hand: list[Card], name: str) -> None:
         self.hand = init_hand
-        self.position = position
+        self.name = name  # not used
         self.id = self.create_id()
-        self.role = "player-role"
 
-    def get_data(self) -> PlayerDataType:
-        """Returns player data"""
-        return {"id": self.id, "hand": self.hand}
+        self.role: PlayerRoles = ""  # not used
 
-    def take_card(self, deck):
-        pass
+    def put_card_from_hand(self, index: int) -> Card:
+        """get card from 'index' position in player hand"""
+        if index <= len(self.hand):
+            return self.hand.pop(index)
+        else:
+            raise Exception("given position is outside of player hand")
 
-    def put_card(self, card_id):
+    def put_card_by_id(self, card_id):
         """delete card from self.hand and returns it"""
         for i in range(len(self.hand)):
             if self.hand[i].id == card_id:
@@ -42,7 +38,7 @@ class Player:
         return randint(0, 9999)
 
     def __repr__(self) -> str:
-        return f"Player: {self.id}"
+        return f"Player: id-{self.id}, name-{self.name}"
 
     def __str__(self) -> str:
-        return f"Player: {self.id}"
+        return f"Player: id-{self.id}, name-{self.name}"
