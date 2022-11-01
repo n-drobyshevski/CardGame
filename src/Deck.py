@@ -8,7 +8,7 @@ from .Card import Card, MetaCard
 
 class Deck:
     def __init__(self):
-        self.deck = self._create_deck()
+        self.deck: list = self._create_deck()
         self.length = len(self.deck)
 
     def _create_deck(self) -> list:

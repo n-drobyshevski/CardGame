@@ -16,7 +16,7 @@ class Game:
     # tip: Optional[TYPE] - means that arg can be TYPE or None
     def __init__(self, player_names: Optional[list[str]] = None) -> None:
         self.players_count = 4
-        self.deck = Deck()
+        self.deck: list = Deck().deck
         self.players: list[Player] = self._create_players(player_names)
         self.round: int = 0
         # tip: data type is equals to [ (Card, Player), (..., ...), ...]
@@ -28,11 +28,11 @@ class Game:
 
     # ------------- CARDS METHODS -----------------------------
     def get_random_card(self) -> Card:
-        card_index = randint(0, self.deck.length - 1)
-        card = self.get_card_by_id(card_index)
+        card_index = randint(0, len(self.deck) - 1)
+        card = self.deck.pop(card_index)
         return card
 
-    # tip: data type is equals to [ (Card, Player), (..., ...), ...]
+    # tip: data arg type is equal to [ (Card, Player), (Card, Player), ...]
     def compare_cards(self, data: list[Tuple[Card, Player]], main_suit: CardSuitsType):
         highest_card = None
         wining_player = None
@@ -49,7 +49,7 @@ class Game:
         return highest_card, wining_player
 
     def get_card_by_id(self, id: int) -> Card:
-        for card in self.deck.deck:
+        for card in self.deck:
             if card.id == id:
                 return card
         raise Exception("requested id doesn't correspond to any card")
