@@ -5,6 +5,8 @@ from src.cli.Console import Console
 from src.Player import Player
 from src.Game import Game
 
+import test
+
 
 def initialize():
     game = Game(player_names=["first", "second", "third", "fourth"])
@@ -13,7 +15,6 @@ def initialize():
     # choose first playing player
     index = randint(0, 3)  # only exemple, needs to be changed
     game.first_playing_player = game.players[index]
-
     return game, console
 
 
@@ -23,6 +24,7 @@ def main(game, console):
 
     # ------------------- GAME LOGIC -----------------------
     current_player = game.get_next_player()
+
     # ------------------ SET NEW DATA -----------------------
     console.set_info_data(data=game.round)
     console.set_table_data(data=game.table)
@@ -43,15 +45,16 @@ def main(game, console):
         (current_player.put_card_from_hand(card_index - 1), current_player)
     )
 
-    return True, game, console
+    return True
 
 
 if __name__ == "__main__":
     # INITIALIZING GAME
     game, console = initialize()
 
+    # TESTS
+    assert test.unique_player_hands(game)
     # MAIN LOOP
-
     condition = True
     while condition:
-        condition, game, console = main(game, console)
+        condition = main(game, console)
