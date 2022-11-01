@@ -1,7 +1,7 @@
 from random import randint
 from time import sleep
 
-from src.cli.Console import Console
+from cli.console import Console
 from src.Player import Player
 from src.Game import Game
 
